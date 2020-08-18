@@ -1,4 +1,3 @@
 $(document).ready(function(){
-    //draw a grid
-    const BoardGame = new BoardGame('board-game')
+    const boardGame = new BoardGame('#board-game')
 });
