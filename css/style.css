@@ -1,0 +1,17 @@
+body{
+    text-align: center;
+}
+#board-game{
+    background-color: yellow;
+    display: inline-block;    
+    padding: 15px;
+}
+.col{
+    width: 70px !important;
+    height: 70px;
+    display: inline-block !important;
+    background-color: white;
+    border-radius: 5%;
+    margin: 2px;
+    
+}
