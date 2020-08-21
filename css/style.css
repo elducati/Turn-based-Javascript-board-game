@@ -2,7 +2,7 @@ body{
     text-align: center;
 }
 #board-game{
-    background-color: yellow;
+    background-color: rgba(0, 132, 255, 0.405);
     display: inline-block;    
     padding: 15px;
 }
