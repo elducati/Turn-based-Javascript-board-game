@@ -15,3 +15,10 @@ body{
     margin: 2px;
     
 }
+.autobot{
+    background-image: url(/assets/autobots.png);
+    background-size: contain;
+}
+.next-red{
+    background-color: red;
+}
