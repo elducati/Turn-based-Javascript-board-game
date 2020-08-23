@@ -1,7 +1,7 @@
 class BoardGame {
     constructor(selector){
         this.ROWS = 6;
-        this.COLS = 10;
+        this.COLS = 6;
         this.selector = selector;
         this.createGrid();
         this.setupEventListeners();
@@ -35,7 +35,7 @@ class BoardGame {
             }
             return null;
         }
-        $board.on('mouseenter', '.col.empty', function(){
+        $board.on('click', '.col.empty', function(){
             const col = $(this).data('col');
             const $lastEmptyCell = findLastEmptyCell(col);
             $lastEmptyCell.addClass('autobot');
