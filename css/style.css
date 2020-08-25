@@ -19,6 +19,7 @@ body{
     background-image: url(/assets/autobots.png);
     background-size: contain;
 }
-.next-red{
-    background-color: red;
+.cybertron{
+    background-image: url(/assets/cybertrons.png);
+    background-size: contain;
 }

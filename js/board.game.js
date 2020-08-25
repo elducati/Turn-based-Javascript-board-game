@@ -1,44 +1,46 @@
 class BoardGame {
-    constructor(selector){
+    constructor(selector) {
         this.ROWS = 6;
         this.COLS = 6;
         this.selector = selector;
         this.createGrid();
         this.setupEventListeners();
     }
-    createGrid(){
+    createGrid() {
         const $board = $(this.selector);
         console.log($board);
-        for(let row = 0; row < this.ROWS; row++){
+        for (let row = 0; row < this.ROWS; row++) {
             const $row = $('<div>')
-            .addClass('row');
-            for(let col = 0; col < this.COLS; col++){
+                .addClass('row');
+            for (let col = 0; col < this.COLS; col++) {
                 const $col = $('<div>')
-                .addClass('col empty')
-                .attr('data-col', col)
-                .attr('data-row', row);
+                    .addClass('col empty')
+                    .attr('data-col', col)
+                    .attr('data-row', row);
                 $row.append($col);
             }
             $board.append($row);
         }
         console.log($board.html());
     }
-    setupEventListeners(){
+    setupEventListeners() {
         const $board = $(this.selector);
-        function findLastEmptyCell(col){
-            const cells = $(`.col[data-col='${col}']`);
-            for (let i = cells.length - 1; i >= 0; i--){
-                const $cell = $(cells[i]);
-                if ($cell.hasClass('empty')){
-                    return $cell;
-                }
+        function findEmptyCell() {
+            const cells = $(`.col[data-col='${0}']`);
+            const $cell = $(cells);
+            if ($cell.hasClass('empty')) {
+                return $cell;
             }
-            return null;
+            else {
+                return null;
+            }
+
+
         }
-        $board.on('click', '.col.empty', function(){
+        $board.on('click', '.col.empty', function () {
             const col = $(this).data('col');
-            const $lastEmptyCell = findLastEmptyCell(col);
-            $lastEmptyCell.addClass('autobot');
+            const $emptyCell = findEmptyCell(col);
+            $emptyCell.addClass('autobot');
         })
     }
 }
