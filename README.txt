@@ -1,8 +1,2 @@
-MDB5
-Version: FREE 1.0.0-beta2
-
-Documentation:
-https://mdbootstrap.com/docs/standard/
-
-Contact:
-office@mdbootstrap.com
+A turn-based board game in JavaScript
+This is an online game written JavaScript in which 2 players play each turn to compete. 
