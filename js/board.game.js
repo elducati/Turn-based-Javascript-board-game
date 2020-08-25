@@ -34,8 +34,6 @@ class BoardGame {
             else {
                 return null;
             }
-
-
         }
         $board.on('click', '.col.empty', function () {
             const col = $(this).data('col');
