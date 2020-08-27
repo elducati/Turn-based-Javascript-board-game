@@ -25,15 +25,16 @@ class BoardGame {
     }
     setupEventListeners() {
         const $board = $(this.selector);
-        function findEmptyCell() {
-            const cells = $(`.col[data-col='${0}']`);
-            const $cell = $(cells);
-            if ($cell.hasClass('empty')) {
-                return $cell;
+        function findEmptyCell(col) {
+            const cells = $(`.col[data-col='${col}']`);
+
+            for (let i = cells.length - 1; i >= 0; i--) {
+                const $cell = $(cells[i]);
+                if ($cell.hasClass('empty')) {
+                    return $cell;
+                }
             }
-            else {
-                return null;
-            }
+            return null;
         }
         $board.on('click', '.col.empty', function () {
             const col = $(this).data('col');
