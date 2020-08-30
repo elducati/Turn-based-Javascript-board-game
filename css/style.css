@@ -15,6 +15,9 @@ body{
     margin: 2px;
     
 }
+.col.empty {
+    cursor: pointer;
+}
 .autobot{
     background-image: url(../assets/autobots.png);
     background-size: contain;
@@ -22,4 +25,25 @@ body{
 .cybertron{
     background-image: url(../assets/cybertrons.png);
     background-size: contain;
+}
+.katana{
+    background-image: url(../assets/katana.png);
+    background-size:contain;
+}
+.gun{
+    background-image: url(../assets/gun.png);
+    background-size:contain;
+}
+.machine-gun{
+    background-image:url(../assets/machine-gun.png);
+    background-size:contain;
+}
+.rocket-launcher{
+    background-image:url(../assets/rocket-launcher.png);
+    background-size:contain;
+}
+.wall{
+    background-image: url(../assets/wall.png);
+    background-size:contain;
+
 }

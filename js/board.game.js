@@ -2,6 +2,7 @@ class BoardGame {
     constructor(selector) {
         this.ROWS = 6;
         this.COLS = 6;
+        this.player = 'cybertron'
         this.selector = selector;
         this.createGrid();
         this.setupEventListeners();
@@ -25,7 +26,8 @@ class BoardGame {
     }
     setupEventListeners() {
         const $board = $(this.selector);
-        function findEmptyCell(col) {
+        const that = this;
+        function findLastEmptyCell(col) {
             const cells = $(`.col[data-col='${col}']`);
 
             for (let i = cells.length - 1; i >= 0; i--) {
@@ -36,13 +38,23 @@ class BoardGame {
             }
             return null;
         }
-        $board.on('click', '.col.empty', function () {
+        $board.on('mouseenter', '.col.empty', function () {
             const col = $(this).data('col');
-            const $emptyCell = findEmptyCell(col);
-            $emptyCell.addClass('autobot');
+            const $lastEmptyCell = findLastEmptyCell(col);
+            $lastEmptyCell.addClass(`${that.player}`);
+            
+            
         })
         $board.on('mouseleave', '.col', function(){
-            $('.col').removeClass('autobot');
+            $('.col').removeClass(`${that.player}`);
+        })
+        $board.on('click', '.col.empty', function(){
+            const col = $(this).data('col');
+            const $lastEmptyCell = findLastEmptyCell(col);
+            $lastEmptyCell.removeClass(`empty ${that.player}`);
+            $lastEmptyCell.addClass(that.player);
+            that.player = (that.player === 'cybertron') ? 'autobot' : 'cybertron';
+            
         })
     }
 }
