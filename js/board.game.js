@@ -41,5 +41,8 @@ class BoardGame {
             const $emptyCell = findEmptyCell(col);
             $emptyCell.addClass('autobot');
         })
+        $board.on('mouseleave', '.col', function(){
+            $('.col').removeClass('autobot');
+        })
     }
 }
