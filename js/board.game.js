@@ -1,11 +1,11 @@
 class BoardGame {
     constructor(selector) {
-        this.ROWS = 6;
-        this.COLS = 6;
-        this.player = 'cybertron'
+        this.ROWS = 8;
+        this.COLS = 11;
+        this.player = 'cybertron';
         this.selector = selector;
         this.createGrid();
-        this.setupEventListeners();
+        this.setupPlayersOnBoard();
     }
     createGrid() {
         const $board = $(this.selector);
@@ -24,37 +24,26 @@ class BoardGame {
         }
         console.log($board.html());
     }
-    setupEventListeners() {
+    setupPlayersOnBoard() {
         const $board = $(this.selector);
-        const that = this;
-        function findLastEmptyCell(col) {
-            const cells = $(`.col[data-col='${col}']`);
-
-            for (let i = cells.length - 1; i >= 0; i--) {
-                const $cell = $(cells[i]);
-                if ($cell.hasClass('empty')) {
-                    return $cell;
-                }
-            }
-            return null;
-        }
-        $board.on('mouseenter', '.col.empty', function () {
+        function targetCell(col, row){
+            return $(`[data-col='${col}']`).filter(`[data-row='${row}']`);
+            
+        }        
+        $board.on('click', '.col', function(){            
             const col = $(this).data('col');
-            const $lastEmptyCell = findLastEmptyCell(col);
-            $lastEmptyCell.addClass(`${that.player}`);
-            
+            const row = $(this).data('row');
+            const $targetCell = targetCell(col, row);
+            $targetCell.addClass('cybertron');       
             
         })
-        $board.on('mouseleave', '.col', function(){
-            $('.col').removeClass(`${that.player}`);
-        })
-        $board.on('click', '.col.empty', function(){
+        $board.on('mouseenter', '.col', function(){
             const col = $(this).data('col');
-            const $lastEmptyCell = findLastEmptyCell(col);
-            $lastEmptyCell.removeClass(`empty ${that.player}`);
-            $lastEmptyCell.addClass(that.player);
-            that.player = (that.player === 'cybertron') ? 'autobot' : 'cybertron';
-            
-        })
+            const row = $(this).data('row');
+            const $targetCell = targetCell(col, row);
+            $targetCell.addClass('autobot'); 
+        })        
+        
     }
 }
+
