@@ -2,7 +2,7 @@ class BoardGame {
     constructor(selector) {
         this.ROWS = 8;
         this.COLS = 11;
-        this.player = 'cybertron';
+        this.player = player;
         this.selector = selector;
         this.createGrid();
         this.setupPlayersOnBoard();
@@ -18,32 +18,13 @@ class BoardGame {
                     .addClass('col empty')
                     .attr('data-col', col)
                     .attr('data-row', row);
+                    
                 $row.append($col);
             }
             $board.append($row);
         }
         console.log($board.html());
     }
-    setupPlayersOnBoard() {
-        const $board = $(this.selector);
-        function targetCell(col, row){
-            return $(`[data-col='${col}']`).filter(`[data-row='${row}']`);
-            
-        }        
-        $board.on('click', '.col', function(){            
-            const col = $(this).data('col');
-            const row = $(this).data('row');
-            const $targetCell = targetCell(col, row);
-            $targetCell.addClass('cybertron');       
-            
-        })
-        $board.on('mouseenter', '.col', function(){
-            const col = $(this).data('col');
-            const row = $(this).data('row');
-            const $targetCell = targetCell(col, row);
-            $targetCell.addClass('autobot'); 
-        })        
-        
-    }
+    
 }
 
