@@ -4,7 +4,7 @@ class BoardGame {
     this.COLS = 11;
     this.selector = selector;
     this.createGrid();
-    this.setupPlayersOnBoard();
+    this.setupBoard();
   }
   createGrid() {
     const $board = $(this.selector);
@@ -23,7 +23,7 @@ class BoardGame {
     }
     console.log($board.html());
   }
-  setupPlayersOnBoard() {
+  setupBoard() {
     const $board = $(this.selector);
 
     function findTargetCell(col, row) {
