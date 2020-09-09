@@ -4,19 +4,21 @@ class BoardGame {
     this.COLS = 11;
     this.selector = selector;
     this.createGrid();
-    this.setupBoard();
+    this.setupBoard();    
   }
   createGrid() {
     const $board = $(this.selector);
     console.log($board);
+    let cellNumber = 0;
     for (let row = 0; row < this.ROWS; row++) {
       const $row = $("<div>").addClass("row");
       for (let col = 0; col < this.COLS; col++) {
         const $col = $("<div>")
           .addClass("col empty")
           .attr("data-col", col)
-          .attr("data-row", row);
-
+          .attr("data-row", row)
+          .attr("cell-number", cellNumber);
+          cellNumber++;
         $row.append($col);
       }
       $board.append($row);
@@ -29,7 +31,7 @@ class BoardGame {
     function findTargetCell(col, row) {
       return $(`[data-col='${col}']`).filter(`[data-row='${row}']`);
     }
-    $board.on("mouseenter", ".col.empty", function () {
+    $board.on("load", ".col.empty", function () {
       const col = $(this).data("col");
       const row = $(this).data("row");
       const $targetCell = findTargetCell(col, row);
