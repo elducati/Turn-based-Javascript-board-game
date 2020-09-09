@@ -31,7 +31,7 @@ class BoardGame {
     function findTargetCell(col, row) {
       return $(`[data-col='${col}']`).filter(`[data-row='${row}']`);
     }
-    $board.on("load", ".col.empty", function () {
+    $board.on("mouseenter", ".col.empty", function () {
       const col = $(this).data("col");
       const row = $(this).data("row");
       const $targetCell = findTargetCell(col, row);
@@ -47,7 +47,7 @@ class BoardGame {
       else if(col == 5 && col < 7 && row == 2 && row < 4){
         $targetCell.addClass("katana");
       }
-      else if(col == 4 && col < 5 && row == 3 && row < 5){
+      else if(col == 3 && col < 4 && row == 4 && row < 5){
         $targetCell.addClass("machine-gun");
       }
       else if(col == 9 && col < 10 && row == 5 && row < 6){
