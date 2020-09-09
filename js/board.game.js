@@ -34,7 +34,7 @@ class BoardGame {
       const row = $(this).data("row");
       const $targetCell = findTargetCell(col, row);
       if (col == 0 && col < 2 && row == 0 && row < 2) {
-        $targetCell.addClass("cybertron");
+        $targetCell.addClass("deceptacon");
       }
       else if(col == 9 && col < 10 && row == 0 && row < 2){
         $targetCell.addClass("autobot");
@@ -48,7 +48,7 @@ class BoardGame {
       else if(col == 4 && col < 5 && row == 3 && row < 5){
         $targetCell.addClass("machine-gun");
       }
-      else if(col == 3 && col < 4 && row == 5 && row < 6){
+      else if(col == 9 && col < 10 && row == 5 && row < 6){
         $targetCell.addClass("rocket-launcher");
       }
       else if(col == 2 && col < 3 && row == 7 && row < 8){
