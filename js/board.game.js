@@ -4,7 +4,7 @@ class BoardGame {
     this.COLS = 11;
     this.selector = selector;
     this.createGrid();
-    this.setupBoard();    
+    this.setupBoard();
   }
   createGrid() {
     const $board = $(this.selector);
@@ -18,7 +18,7 @@ class BoardGame {
           .attr("data-col", col)
           .attr("data-row", row)
           .attr("cell-number", cellNumber);
-          cellNumber++;
+        cellNumber++;
         $row.append($col);
       }
       $board.append($row);
@@ -26,36 +26,33 @@ class BoardGame {
     console.log($board.html());
   }
   setupBoard() {
+    console.log("setUpBoard called");
+    const nums = pickRandomNumber(this.ROWS, this.COLS, 10);
+    console.log(nums);
     const $board = $(this.selector);
-
-    function findTargetCell(col, row) {
-      return $(`[data-col='${col}']`).filter(`[data-row='${row}']`);
+    let imgArray = new Array();
+    imgArray[0] = new Image();
+    imgArray[0].src = 'assets/autobots.png';
+    imgArray[1] = new Image();
+    imgArray[1].src = 'assets/cybertrons.png';
+    imgArray[2] = new Image();
+    imgArray[2].src = 'assets/wall.png';
+    imgArray[3] = new Image();
+    imgArray[3].src = 'assets/katana.png';
+    imgArray[4] = new Image();
+    imgArray[4].src = 'assets/gun.png';
+    imgArray[5] = new Image();
+    imgArray[5].src = 'assets/machine-gun.png';
+    imgArray[6] = new Image();
+    imgArray[6].src = 'assets/rocket-launcher.png';
+    
+    // pick cells to place
+    for (let i = 0; i < nums.length; i++) {
+      const cellNo = nums[i];
+      const $targetCell = $(`[cell-number=${cellNo}]`);
+      for (let j = 0; j < imgArray.length; j++) {
+        $targetCell.append(imgArray[i]);
+      }
     }
-    $board.on("mouseenter", ".col.empty", function () {
-      const col = $(this).data("col");
-      const row = $(this).data("row");
-      const $targetCell = findTargetCell(col, row);
-      if (col == 0 && col < 2 && row == 0 && row < 2) {
-        $targetCell.addClass("deceptacon");
-      }
-      else if(col == 9 && col < 10 && row == 0 && row < 2){
-        $targetCell.addClass("autobot");
-      }
-      else if(col == 7 && col < 8 && row == 1 && row < 3 ){
-        $targetCell.addClass("gun");
-      }
-      else if(col == 5 && col < 7 && row == 2 && row < 4){
-        $targetCell.addClass("katana");
-      }
-      else if(col == 3 && col < 4 && row == 4 && row < 5){
-        $targetCell.addClass("machine-gun");
-      }
-      else if(col == 9 && col < 10 && row == 5 && row < 6){
-        $targetCell.addClass("rocket-launcher");
-      }
-      else if(col == 2 && col < 3 && row == 7 && row < 8){
-        $targetCell.addClass("wall");
-      }
-    });
   }
 }

@@ -7,8 +7,8 @@ body{
     padding: 15px;
 }
 .col{
-    width: 70px !important;
-    height: 70px;
+    width: 100px !important;
+    height: 100px;
     display: inline-block !important;
     background-color: white;
     border-radius: 5%;
