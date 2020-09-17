@@ -30,29 +30,14 @@ class BoardGame {
     const nums = pickRandomNumber(this.ROWS, this.COLS, 10);
     console.log(nums);
     const $board = $(this.selector);
-    let imgArray = new Array();
-    imgArray[0] = new Image();
-    imgArray[0].src = 'assets/autobots.png';
-    imgArray[1] = new Image();
-    imgArray[1].src = 'assets/cybertrons.png';
-    imgArray[2] = new Image();
-    imgArray[2].src = 'assets/wall.png';
-    imgArray[3] = new Image();
-    imgArray[3].src = 'assets/katana.png';
-    imgArray[4] = new Image();
-    imgArray[4].src = 'assets/gun.png';
-    imgArray[5] = new Image();
-    imgArray[5].src = 'assets/machine-gun.png';
-    imgArray[6] = new Image();
-    imgArray[6].src = 'assets/rocket-launcher.png';
+    const className = ['autobot', 'deceptacon', 'gun', 'katana', 'machine-gun', 'rocket-launcher', 'wall', 'wall', 'wall'];
     
     // pick cells to place
     for (let i = 0; i < nums.length; i++) {
       const cellNo = nums[i];
       const $targetCell = $(`[cell-number=${cellNo}]`);
-      for (let j = 0; j < imgArray.length; j++) {
-        $targetCell.append(imgArray[i]);
+      $targetCell.addClass(className[i]);
       }
     }
   }
-}
+
