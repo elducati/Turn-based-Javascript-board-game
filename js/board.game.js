@@ -5,6 +5,7 @@ class BoardGame {
     this.selector = selector;
     this.createGrid();
     this.setupBoard();
+    this.setupEventlisteners();
   }
   createGrid() {
     const $board = $(this.selector);
@@ -28,8 +29,7 @@ class BoardGame {
   setupBoard() {
     console.log("setUpBoard called");
     const nums = pickRandomNumber(this.ROWS, this.COLS, 10);
-    console.log(nums);
-    const $board = $(this.selector);
+    console.log(nums);    
     const className = ['autobot', 'deceptacon', 'gun', 'katana', 'machine-gun', 'rocket-launcher', 'wall', 'wall', 'wall'];
     
     // pick cells to place
@@ -38,6 +38,19 @@ class BoardGame {
       const $targetCell = $(`[cell-number=${cellNo}]`);
       $targetCell.addClass(className[i]);
       }
+    }
+    setupEventlisteners(){
+      const $board = $(this.selector);
+      function findTargetCell(row, col){
+        const cells = $(`.col[data-col='${col}']`).filter(`.row[data-row='${row}']`);
+        console.log(cells);
+      }
+      $board.on('mouseenter','.col', function(){
+        const row = $(this).data('row');        
+        const col = $(this).data('col');
+        const $findTarget = findTargetCell(row, col);
+        //$findTarget.addClass('katana');
+      })
     }
   }
 
