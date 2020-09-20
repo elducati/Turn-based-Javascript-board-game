@@ -3,6 +3,7 @@ class BoardGame {
     this.ROWS = 8;
     this.COLS = 11;
     this.selector = selector;
+    this.player = 'autobot';
     this.createGrid();
     this.setupBoard();
     this.setupEventlisteners();
@@ -30,7 +31,7 @@ class BoardGame {
     console.log("setUpBoard called");
     const nums = pickRandomNumber(this.ROWS, this.COLS, 10);
     console.log(nums);    
-    const className = ['autobot', 'deceptacon', 'gun', 'katana', 'machine-gun', 'rocket-launcher', 'wall', 'wall', 'wall'];
+    const className = ['gun', 'katana', 'machine-gun', 'rocket-launcher', 'wall', 'wall', 'wall'];
     
     // pick cells to place
     for (let i = 0; i < nums.length; i++) {
@@ -40,17 +41,28 @@ class BoardGame {
       }
     }
     setupEventlisteners(){
-      const $board = $(this.selector);
-      function findTargetCell(row, col){
-        const cells = $(`.col[data-col='${col}']`).filter(`.row[data-row='${row}']`);
-        console.log(cells);
-      }
+      const $board = $(this.selector);     
+      const that = this;
       $board.on('mouseenter','.col', function(){
         const row = $(this).data('row');        
         const col = $(this).data('col');
-        const $findTarget = findTargetCell(row, col);
-        //$findTarget.addClass('katana');
+        const $findTarget = $(`[data-col='${col}']`).filter(`[data-row='${row}']`);
+        console.log($findTarget);
+        $findTarget.addClass(that.player);
       })
+      $board.on('mouseleave','.col', function(){
+        $('.col').removeClass(that.player);
+
+      })
+      $board.on('click','.col', function(){
+        const row = $(this).data('row');        
+        const col = $(this).data('col');
+        const $findTarget = $(`[data-col='${col}']`).filter(`[data-row='${row}']`);
+        $findTarget.removeClass('empty');
+        $findTarget.addClass(that.player);
+        that.player = (that.player === 'autobot') ? 'deceptacon': 'autobot';
+      })
+      
     }
   }
 
