@@ -47,3 +47,6 @@ body{
     background-size:contain;
 
 }
+.highlighted{
+    border: 2px solid red;
+}

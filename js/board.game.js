@@ -3,7 +3,7 @@ class BoardGame {
     this.ROWS = 8;
     this.COLS = 11;
     this.selector = selector;
-    this.player = 'autobot';
+    this.player = "autobot";
     this.createGrid();
     this.setupBoard();
     this.setupEventlisteners();
@@ -28,41 +28,69 @@ class BoardGame {
     console.log($board.html());
   }
   setupBoard() {
-    console.log("setUpBoard called");
-    const nums = pickRandomNumber(this.ROWS, this.COLS, 10);
-    console.log(nums);    
-    const className = ['gun', 'katana', 'machine-gun', 'rocket-launcher', 'wall', 'wall', 'wall'];
-    
+    const $board = $(this.selector);
+    const nums = pickRandomNumber(this.ROWS, this.COLS, 14);
+    console.log(nums);
+    const className = [
+      "autobot",
+      "deceptacon",
+      "gun",
+      "katana",
+      "machine-gun",
+      "rocket-launcher",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+      "wall",
+    ];
+
     // pick cells to place
     for (let i = 0; i < nums.length; i++) {
       const cellNo = nums[i];
       const $targetCell = $(`[cell-number=${cellNo}]`);
-      $targetCell.addClass(className[i]);
+      $targetCell.addClass(className[i]).removeClass("empty");
+      const row = $(this).data("row");
+      const col = $(this).data("col");
+      const $findTarget = $(`[data-col='${col}']`).filter(
+        `[data-row='${row}']`
+      );
+      if (($findTarget).hasClass("empty")) {
+        $board.on("mouseenter", ".col.empty", function () {
+          $('.col.empty').addClass("highlighted");
+        });
+        $board.on("mouseleave", ".col.empty", function () {
+          $($findTarget).removeClass("highlighted");
+        });
       }
     }
-    setupEventlisteners(){
-      const $board = $(this.selector);     
-      const that = this;
-      $board.on('mouseenter','.col', function(){
-        const row = $(this).data('row');        
-        const col = $(this).data('col');
-        const $findTarget = $(`[data-col='${col}']`).filter(`[data-row='${row}']`);
-        console.log($findTarget);
-        $findTarget.addClass(that.player);
-      })
-      $board.on('mouseleave','.col', function(){
-        $('.col').removeClass(that.player);
-
-      })
-      $board.on('click','.col', function(){
-        const row = $(this).data('row');        
-        const col = $(this).data('col');
-        const $findTarget = $(`[data-col='${col}']`).filter(`[data-row='${row}']`);
-        $findTarget.removeClass('empty');
-        $findTarget.addClass(that.player);
-        that.player = (that.player === 'autobot') ? 'deceptacon': 'autobot';
-      })
-      
-    }
   }
-
+  setupEventlisteners() {
+    const $board = $(this.selector);
+    const that = this;
+    $board.on("mouseenter", ".col", function () {
+      const row = $(this).data("row");
+      const col = $(this).data("col");
+      const $findTarget = $(`[data-col='${col}']`).filter(
+        `[data-row='${row}']`
+      );
+      console.log($findTarget);
+      //$findTarget.addClass(that.player);
+    });
+    $board.on("mouseleave", ".col", function () {
+      //$(".col").removeClass(that.player);
+    });
+    $board.on("click", ".col", function () {
+      const row = $(this).data("row");
+      const col = $(this).data("col");
+      const $findTarget = $(`[data-col='${col}']`).filter(
+        `[data-row='${row}']`
+      );
+      $findTarget.addClass(that.player);
+      //that.player = that.player === "autobot" ? "deceptacon" : "autobot";
+    });
+  }
+}
