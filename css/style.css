@@ -50,3 +50,11 @@ body{
 .highlighted{
     border: 2px solid red;
 }
+.player-active{
+    border: 2px solid green;
+    background-color: green;
+}
+.player-not-active{
+    border: 2px solid grey;
+    background-color: grey;
+}

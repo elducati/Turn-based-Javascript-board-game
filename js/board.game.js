@@ -39,14 +39,7 @@ class BoardGame {
       const $targetCell = $(`[cell-number=${cellNo}]`);
       $targetCell.addClass(className[i]).removeClass('empty');
       
-      if($('.col').hasClass('empty')){
-        $board.on('mouseenter','.col.empty', function(){
-          $('.col.empty').addClass('highlighted');
-        })
-        $board.on('mouseleave','.col.empty', function(){
-          $('.col.empty').removeClass('highlighted');
-        })        
-      }
+      
       
       }
     }
@@ -57,20 +50,39 @@ class BoardGame {
         const row = $(this).data('row');        
         const col = $(this).data('col');
         const $findTarget = $(`[data-col='${col}']`).filter(`[data-row='${row}']`);
-        console.log($findTarget);
+        //console.log($findTarget);
         //$findTarget.addClass(that.player);
+        if($findTarget.hasClass('empty')){
+          $findTarget.addClass('highlighted');
+        }
+        else{
+          return null;
+        }        
+       
       })
       $board.on('mouseleave','.col', function(){
-        $('.col').removeClass(that.player);
+        const row = $(this).data('row');        
+        const col = $(this).data('col');
+        const $findTarget = $(`[data-col='${col}']`).filter(`[data-row='${row}']`);
+        //$('.col').removeClass(that.player);
+        $findTarget.removeClass('highlighted');
+
 
       })
       $board.on('click','.col', function(){
         const row = $(this).data('row');        
         const col = $(this).data('col');
         const $findTarget = $(`[data-col='${col}']`).filter(`[data-row='${row}']`);        
-        $findTarget.addClass(that.player);
+        
         that.player = (that.player === 'autobot') ? 'deceptacon': 'autobot';
+        if($findTarget.hasClass('highlighted')){
+          $findTarget.addClass(that.player);
+          $findTarget.addClass('player-not-active');
+          $(that.player).addClass('player-active');
+        }
+        
       })
+      
       
     }
   }
