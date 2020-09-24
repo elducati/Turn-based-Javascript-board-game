@@ -1,7 +1,7 @@
 class BoardGame {
   constructor(selector) {
-    this.ROWS = 8;
-    this.COLS = 11;
+    this.ROWS = 10;
+    this.COLS = 10;
     this.selector = selector;
     this.player = 'autobot';
     this.createGrid();

@@ -19,11 +19,11 @@ body{
     cursor: pointer;
 }
 .autobot{
-    background-image: url(../assets/autobots.png);
+    background-image: url(../assets/autobot.png);
     background-size: contain;
 }
 .deceptacon{
-    background-image: url(../assets/cybertrons.png);
+    background-image: url(../assets/deceptacon.png);
     background-size: contain;
 }
 .katana{
