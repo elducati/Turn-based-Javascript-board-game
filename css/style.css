@@ -7,8 +7,8 @@ body{
     padding: 15px;
 }
 .col{
-    width: 100px !important;
-    height: 100px;
+    width: 50px !important;
+    height: 50px;
     display: inline-block !important;
     background-color: white;
     border-radius: 5%;
@@ -48,13 +48,17 @@ body{
 
 }
 .highlighted{
-    border: 2px solid red;
+    border: 2px solid green;
 }
 .player-active{
-    border: 2px solid green;
+    border: 2px solid blue;
     background-color: green;
 }
 .player-not-active{
     border: 2px solid grey;
     background-color: grey;
 }
+.accessible {
+    background-color: rgb(160, 255, 255);
+    cursor: pointer;
+  }

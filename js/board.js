@@ -64,8 +64,9 @@ class BoardGame {
         const row = $(this).data('row');        
         const col = $(this).data('col');
         const $findTarget = $(`[data-col='${col}']`).filter(`[data-row='${row}']`);
-        //$('.col').removeClass(that.player);
+        $('.col').removeClass(that.player);
         $findTarget.removeClass('highlighted');
+        $findTarget.removeClass('player-not-active');
 
 
       })
