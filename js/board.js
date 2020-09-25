@@ -5,8 +5,7 @@ export default class BoardGame {
   constructor(player1, player2, weapons) {
     this.weapons = weapons;
     this.player1 = player1;
-    this.player2 = player2;
-    
+    this.player2 = player2;   
 
     this.width = null;
     this.height = null;
@@ -23,7 +22,7 @@ export default class BoardGame {
       for (let row = 0; row < this.height; row++) {
         let cellDiv = $(`<div class='cell' id='cell-c${column}-r${row}' data-x='${column}' data-y='${row}'></div>`);
         let cell = new Cell(column, row, cellDiv);
-        console.log(cellDiv);
+        //console.log(cellDiv);
         columnArr.push(cell);
         $("#board").append(cellDiv);
       }
