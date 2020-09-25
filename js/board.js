@@ -57,7 +57,7 @@ export default class BoardGame {
     let adjacentCells = this.getAdjacentCells(cell);
     let adjacentPlayer = adjacentCells.filter((adjacentCell) => adjacentCell.player !== null);
 
-    if (adjacentPlayer.length === 0 && cell.player == null) {
+    if (adjacentPlayer.length === 0 && cell.player === null) {
       cell.player = player;
       cell.element.addClass(player.name);
       player.currentCell = cell;
@@ -69,10 +69,10 @@ export default class BoardGame {
   //add obstacle/wall randomly to the grid
   obstacles() {
     let averageObstacles = Math.floor((this.width * this.height) / ((this.width + this.height) / 2));
-    for (let obstacles = 0; obstacles < averageObstacles; averageObstacles++) {
+    for (let obstacles = 0; obstacles < averageObstacles; obstacles++) {
       let cell = this.randomFreeCell();
-      cell.obstacle = true;
-      cell.element.addClass("wall");
+      cell.obstacles = true;
+      cell.element.addClass("obstacle");
     }
   }
   //randomly place weapons in free cells
@@ -86,10 +86,10 @@ export default class BoardGame {
   //return a free cell
   randomFreeCell() {
     let cell = this.randomCell();
-    if (!cell.obstacle && cell.player == null && cell.weapon == null) {
+    if (!cell.obstacle && cell.player === null && cell.weapon === null) {
       return cell;
     } else {
-      return this.randomFreeCell();
+      return;
     }
 
   }
@@ -111,8 +111,8 @@ export default class BoardGame {
     return adjacentCells;
   }
   //check if cell exits in the grid
-  celleExit(x, y) {
-    return x >= 0 && X < this.width && y < this.height;
+  cellExit(x, y) {
+    return x >= 0 && x < this.width && y < this.height;
   }
   //return array of accessible cells
   getAccessCellsAxis(cell, nbOfAccessCell, horizontal, axis) {
@@ -122,7 +122,7 @@ export default class BoardGame {
       let x = cell.x + (horizontal ? axis * i : 0);
       let y = cell.y + (horizontal ? 0 : axis * i);
 
-      if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
+      if (this.cellExit(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
         accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
       } else {
         break;

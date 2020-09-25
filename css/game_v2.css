@@ -123,11 +123,11 @@
   }
   
   .hero1-avatar {
-    background-image: url("../images/players/viking1.png");
+    background-image: url("../assets/deceptacon.png");
   }
   
   .hero2-avatar {
-    background-image: url("../images/players/viking2.png");
+    background-image: url("../assets/autobot.png");
   }
   
   .hero1-avatar,
@@ -141,12 +141,12 @@
   }
   
   .hero1 {
-    background: #ffc107 no-repeat center url("../images/players/viking_onBoard_1.png");
+    background: #ffc107 no-repeat center url("../assets/deceptacon.png");
     background-size: contain;
   }
   
   .hero2 {
-    background: #3bcfff no-repeat center url("../images/players/viking_onBoard_2.png");
+    background: #3bcfff no-repeat center url("../assets/autobot.png");
     background-size: contain;
   }
   
