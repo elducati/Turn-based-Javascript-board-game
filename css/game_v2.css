@@ -76,23 +76,23 @@
   
   /* ======= WEAPONS ======= */
   
-  .scramasaxe {
-    background-image: url("../images/weapons/weapons_scramasaxe.png");
+  .machine-gun {
+    background-image: url("../assets/machine-gun.png");
     background-size: cover;
   }
   
-  .hammer {
-    background-image: url("../images/weapons/weapons_hammer.png");
+  .rocket-launcher {
+    background-image: url("../assets/rocket-launcher.png");
     background-size: cover;
   }
   
-  .axe {
-    background-image: url("../images/weapons/weapons_axe.png");
+  .katana {
+    background-image: url("../assets/katana.png");
     background-size: cover;
   }
   
-  .sword {
-    background-image: url("../images/weapons/weapons_sword.png");
+  .gun {
+    background-image: url("../assets/gun.png");
     background-size: cover;
   }
   

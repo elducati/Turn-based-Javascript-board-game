@@ -30,13 +30,94 @@
 
 <body>
   <!-- Start your project here-->
-  <div class="container">
-    <div style="height: 10vh;">              
+  <div class="container row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6">              
         <h5 class="pt-3">Turn-based Board Game</h5>       
       <div id="board">
         
       </div>
     </div>
+    <!-- Players Stats -->
+    <div id="scoreTable" class="col-12 col-sm-12 col-md-12 col-lg-6">
+      <div id="stats" class="row pl-md-4 pr-md-4 pl-lg-0 pr-lg-0 mt-0">
+
+          <!-- Player 1 -->
+          <div id="Player1" class="col-12 mb-2 mb-md-3">
+              <div class="row justify-content-center h-100">
+                  <div class="col-3 text-center bg-warning pb-2 pb-sm-3">
+                      <p class="mt-2 mb-0 mb-md-2"><span id="hero1-name"></span></p>
+                      <img src="assets/deceptacon.png" alt="viking 1" class="imgPlayer">
+                  </div>
+
+                  <div class="pv_status col-9 bg-light">
+                      <div class="row pt-2 mb-2">
+                          <div class="col-4 text-center m-auto">
+                              <span id="hero1-weapon-image"></span>
+                          </div>
+                          <div class="col-8">
+                              <p class="mb-0 mt-sm-2">Weapon&nbsp;: <span id="hero1-weapon-name" class="text-secondary"></span></p>
+                              <div class="mb-0">
+                                  <span>Power&nbsp;: </span><span id="hero1-weapon-infos"></span>
+                              </div>
+                              <div class="hero1-percentage-life mt-2 mb-2">
+                                  100%
+                                  <div id="hero1-move" class="hero-turn hero1-move"></div>
+                              </div>
+
+                              <div class="life">
+                                  <div class="hero1-barre-life"></div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row justify-content-center button-action mb-2">
+                          <button class="col-4 hero1-attack-button fight-btn fight-btn_attack">Attack</button>
+                          <button class="col-4 hero1-defense-button fight-btn fight-btn_defence">Defend</button>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+          <!-- ./Player 1 -->
+           <!-- Player 2 -->
+
+           <div id="Player2" class="col-12 ">
+            <div class="row justify-content-center h-100">
+                <div class="col-3 text-center hero2_bg pb-2 pb-sm-3">
+                    <p class="mt-2 mb-0 mb-md-2"><span id="hero2-name"></span></p>
+                    <img src="assets/autobot.png" alt="viking 2" class="imgPlayer">
+                </div>
+
+                <div class="pv_status col-9 bg-light">
+                    <div class="row pt-2 mb-2">
+                        <div class="col-4 text-center m-auto">
+                            <div id="hero2-weapon-image"></div>
+                        </div>
+                        <div class="col-8">
+                            <p class="mb-0 mt-sm-2">Weapon&nbsp;: <span id="hero2-weapon-name" class="text-secondary"></span></p>
+                            <div class="mb-0">
+                                <span>Power&nbsp;: </span><span id="hero2-weapon-infos"></span>
+                            </div>
+                            <div class="hero2-percentage-life mt-2 mb-2">
+                                100%
+                                <div id="hero2-move" class="hero-turn hero2-move"></div>
+                            </div>
+                            <div class="life">
+                                <div class="hero2-barre-life"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center button-action mb-2">
+                        <button class="col-4 hero2-attack-button fight-btn fight-btn_attack">Attack</button>
+                        <button class="col-4 hero2-defense-button fight-btn fight-btn_defence">Defend</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- ./Player 2 -->
+
   </div>
   <!-- End your project here-->
 </body>

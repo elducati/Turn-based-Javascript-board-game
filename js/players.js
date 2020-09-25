@@ -79,13 +79,13 @@ class Player {
         $("main").css({opacity: "0.15"}).addClass("fade");
         $(".modal-body").prepend(`<div class='${this.name}-bg'><div class='${this.name}-avatar'></div></div>`);
 
-        $("#gameOverMessage").addClass("victory").text(`Le guerrier ${this.nickname} a gangé le Combat !`);
+        $("#gameOverMessage").addClass("victory").text(`The fighter ${this.nickname} has won the fight!`);
         $("#endGameModal").show();
     }
 
     gongSound() {
         // sound of finish
-        let audioGong = new Audio("audio/MetalGong-SoundBible.com-1270479122.mp3");
+        let audioGong = new Audio("../audio/MetalGong-SoundBible.com-1270479122.mp3");
         audioGong.play();
     }
 
@@ -96,7 +96,7 @@ class Player {
         let playerPercentageLife = "." + this.target.name + "-percentage-life";
 
         if (this.target.life <= 0) {
-            $(playerPercentageLife).text(`${this.target.nickname} a perdu le combat`).css({color: "red", fontWeight: "600"});
+            $(playerPercentageLife).text(`${this.target.nickname} lost the fight`).css({color: "red", fontWeight: "600"});
 
             $(`.${this.target.name}`).css("visibility", "hidden");
             $(".button-action").hide();
@@ -146,6 +146,6 @@ class Player {
 
 }
 
-export let player1 = new Player("autobot", "Autobot");
-export let player2 = new Player("deceptacon", "Deceptacon");
+export let player1 = new Player("hero2", "Autobot");
+export let player2 = new Player("hero1", "Deceptacon");
 
