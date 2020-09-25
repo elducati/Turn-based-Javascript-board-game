@@ -1,0 +1,318 @@
+/* ======= Game V2 GENERAL ======= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .title {
+    font-size: 1.5em;
+  }
+  
+  ul.rules {
+    padding-left: 20px;
+  }
+  
+  .opacity {
+    opacity: 1;
+  }
+  
+  .btn-song {
+    font-weight: 500;
+    font-size: 0.9em;
+    color: #bcd8e5;
+    border: none;
+    background-image: linear-gradient(to bottom, #85979f, #404648);
+    border-radius: 25px;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.5);
+    transition-duration: 0.2s;
+    outline: none;
+    width: 2em;
+    height: 2em;
+  }
+  
+  /* ======= BOARD ======= */
+  
+  #board-container {
+    max-width: 700px;
+    min-width: 320px;
+    margin: auto;
+  }
+  
+  #board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
+  
+  #board::before {
+    content: '';
+    width: 0;
+    padding-bottom: 100%;
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+  }
+  
+  #board > *:first-child {
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+  }
+  
+  .cell {
+    background: #fff;
+    box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.05), inset -2px -2px 0 #38434c;
+    border-radius: 0.25em;
+  }
+  
+  .accessible {
+    background-color: rgb(160, 255, 255);
+    cursor: pointer;
+  }
+  
+  .obstacle {
+    background-color: #63758c;
+  }
+  
+  /* ======= WEAPONS ======= */
+  
+  .scramasaxe {
+    background-image: url("../images/weapons/weapons_scramasaxe.png");
+    background-size: cover;
+  }
+  
+  .hammer {
+    background-image: url("../images/weapons/weapons_hammer.png");
+    background-size: cover;
+  }
+  
+  .axe {
+    background-image: url("../images/weapons/weapons_axe.png");
+    background-size: cover;
+  }
+  
+  .sword {
+    background-image: url("../images/weapons/weapons_sword.png");
+    background-size: cover;
+  }
+  
+  /* ======= PLAYERS ======= */
+  
+  .imgPlayer,
+  .hero1-avatar,
+  .hero2-avatar {
+    width: 80px;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .hero1-bg, .hero2-bg  {
+    width: calc(100% - 1em);
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin: auto;
+  }
+  
+  .hero1-bg {
+    background-color: #ffc107;
+  }
+  
+  .hero2-bg {
+    background-color: #3bcfff;
+  }
+  
+  .hero1-avatar {
+    background-image: url("../images/players/viking1.png");
+  }
+  
+  .hero2-avatar {
+    background-image: url("../images/players/viking2.png");
+  }
+  
+  .hero1-avatar,
+  .hero2-avatar {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: calc(100% - 1em);
+    height: 130px;
+    margin: auto;
+  }
+  
+  .hero1 {
+    background: #ffc107 no-repeat center url("../images/players/viking_onBoard_1.png");
+    background-size: contain;
+  }
+  
+  .hero2 {
+    background: #3bcfff no-repeat center url("../images/players/viking_onBoard_2.png");
+    background-size: contain;
+  }
+  
+  .hero2_bg {
+    background-color: #3bcfff;
+  }
+  
+  .standard-size-img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  /* ======= PLAYERS SCORES TABLE ======= */
+  
+  .battle {
+    border: 3px solid rgb(112, 157, 165);
+    background-color: rgb(23, 162, 184);
+  }
+  
+  .life {
+    position: relative;
+    height: 1.25em;
+    width: 100%;
+    box-sizing: content-box;
+  }
+  
+  .restart {
+    padding: 0.5em 1em;
+    margin: auto;
+    width: 100px;
+  }
+  
+  .btn,
+  .fight-btn,
+  .restart {
+    font-weight: 500;
+    font-size: 0.9em;
+    color: #444;
+    border: none;
+    background-image: linear-gradient(to bottom, #fff, #d1dfe5);
+    border-radius: 25px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    transition-duration: 0.2s;
+    outline: none;
+  }
+  
+  .btn,
+  .fight-btn {
+    margin: 0.5em;
+  }
+  
+  .btn {
+    padding: 0.5em 1em;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero1-barre-life,
+  .hero2-barre-life {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .hero-turn {
+    height: 1.25em;
+    width: 1.25em;
+    border-radius: 50%;
+    box-sizing: content-box;
+    float: right;
+  }
+  
+  .hero1-move, .hero2-move {
+    visibility: hidden;
+  }
+  
+  .hero1-barre-life, .hero1-move {
+    background: linear-gradient(to right, rgb(255, 220, 95), rgb(255, 96, 33));
+    border: 1px solid #f48135;
+  }
+  
+  .hero2-barre-life, .hero2-move {
+    background: linear-gradient(to right, rgb(95, 255, 250), rgb(33, 81, 255));
+    border: 1px solid #356bf4;
+  }
+  
+  .fight-btn:active,
+  .btn:active {
+    transform: scale(0.9);
+  }
+  
+  .fight-btn_attack:hover {
+    background-color: #FF3469;
+    background-image: linear-gradient(to top, #ff1671, #ff6c5d, #ffa560, #ffd581, #ffffb7);
+  }
+  .fight-btn_defence:hover,
+  .restart:hover {
+    background-color: #B4ECFF;
+    background-image: linear-gradient(to top, #4083ff, #46a5ff, #70c2ff, #a5ddff, #def5ff);
+  }
+  
+  .fight-btn,
+  .fight-btn_attack,
+  .fight-btn_defence {
+    border-style: none;
+    visibility: hidden;
+    padding: 0.5em;
+    background-image: linear-gradient(to bottom, #fff, #d1dfe5);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    background: #f4fbfd;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    transition-duration: 0.2s;
+    outline: none;
+  }
+  
+  .modal-header {
+    background-color: #f9fdff;
+  }
+  
+  .fade {
+    transition: opacity .15s linear;
+  }
+  
+  .victory {
+    margin: 1em;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 600;
+    color: #191970;
+  }
+  
+  /* == MEDIA QUERIES == */
+  @media (max-width: 362px) {
+    #stats {
+      margin-top: 1em;
+    }
+  
+    body > .container {
+      padding: 0.35em 1em;
+    }
+  
+    .imgPlayer {
+      width: 60px;
+      height: auto;
+      margin-right: auto;
+      margin-left: auto;
+      margin-top: 0.5em;
+    }
+  
+    .standard-size-img {
+      width: 70px;
+      height: 70px;
+    }
+  
+    .btn, .fight-btn, .fight-btn_attack,  .fight-btn_defence {
+      margin: 0.7em;
+      padding: 0.5em 0.9em;
+      font-weight: 500;
+      font-size: 0.9em;
+    }
+  
+    .pv_status {
+      font-size: 0.8em;
+      padding-bottom: 0.25em;
+      padding-top: 0.25em;
+    }
+  }

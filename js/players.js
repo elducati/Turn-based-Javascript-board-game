@@ -18,7 +18,7 @@ class Player {
         newCell.player = this;
         this.currentCell = newCell;
 
-        $(".col").removeClass("accessible");
+        $(".cell").removeClass("accessible");
         $(`.${this.name}`).removeClass(this.name);
         $(newCell.element).addClass(this.name);
     }

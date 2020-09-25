@@ -1,9 +1,12 @@
-class BoardGame {
+import Cell from "./cell.js";
+
+export default class BoardGame {
   //instantiate BoardGame constructor
   constructor(player1, player2, weapons) {
     this.weapons = weapons;
     this.player1 = player1;
     this.player2 = player2;
+    
 
     this.width = null;
     this.height = null;
@@ -13,21 +16,30 @@ class BoardGame {
   createGrid(width, height) {
     this.width = width;
     this.height = height;
-
+    //const $board = $(this.selector);
+    //console.log($board);
     for (let column = 0; column < this.width; column++) {
       let columnArr = [];
       for (let row = 0; row < this.height; row++) {
         let cellDiv = $(`<div class='cell' id='cell-c${column}-r${row}' data-x='${column}' data-y='${row}'></div>`);
         let cell = new Cell(column, row, cellDiv);
+        console.log(cellDiv);
         columnArr.push(cell);
         $("#board").append(cellDiv);
       }
       this.cells.push(columnArr);
+      
+      //console.log(celldDiv.html());
     }
 
     this.players(); // method called to place players on the Grid
     this.obstacles(); // method called to place obstacle on the Grid
     this.weaponsArr(); // method called to place obstacle on the Grid
+  }
+  // Method to generate random integer calculated with min, max
+
+  randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
   }
   randomCell() {
     let x = this.randomNumber(0, this.width);
@@ -56,9 +68,10 @@ class BoardGame {
     }
   }
   //add obstacle/wall randomly to the grid
-  obstacle() {
+  obstacles() {
     let averageObstacles = Math.floor((this.width * this.height) / ((this.width + this.height) / 2));
     for (let obstacles = 0; obstacles < averageObstacles; averageObstacles++) {
+      let cell = this.randomFreeCell();
       cell.obstacle = true;
       cell.element.addClass("wall");
     }
@@ -99,11 +112,11 @@ class BoardGame {
     return adjacentCells;
   }
   //check if cell exits in the grid
-  celleExit(x, y){
+  celleExit(x, y) {
     return x >= 0 && X < this.width && y < this.height;
   }
   //return array of accessible cells
-  getAccessCellsAxis(cell, nbOfAccessCell, horizontal, axis){
+  getAccessCellsAxis(cell, nbOfAccessCell, horizontal, axis) {
     let accessibleCells = [];
     // horizontal direction and axis
     for (let i = 1; i <= nbOfAccessCell; i++) {
@@ -111,34 +124,34 @@ class BoardGame {
       let y = cell.y + (horizontal ? 0 : axis * i);
 
       if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
-          accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
+        accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
       } else {
-          break;
+        break;
       }
-  }
-  return accessibleCells;
+    }
+    return accessibleCells;
   }
   // This method is called in the game object of the Game class
-    // Method to concat accessibleCells array in order to return all cells accessible by the player
+  // Method to concat accessibleCells array in order to return all cells accessible by the player
 
-    getAccessibleCells(cell, nbOfAccessCell) {
-      let accessibleCells = [];
+  getAccessibleCells(cell, nbOfAccessCell) {
+    let accessibleCells = [];
 
-      accessibleCells = accessibleCells.concat(
-          this.getAccessCellsAxis(cell, nbOfAccessCell,true, 1)
-      );
+    accessibleCells = accessibleCells.concat(
+      this.getAccessCellsAxis(cell, nbOfAccessCell, true, 1)
+    );
 
-      accessibleCells = accessibleCells.concat(
-          this.getAccessCellsAxis(cell, nbOfAccessCell,true, -1)
-      );
-      accessibleCells = accessibleCells.concat(
-          this.getAccessCellsAxis(cell, nbOfAccessCell,false, 1)
-      );
-      accessibleCells = accessibleCells.concat(
-          this.getAccessCellsAxis(cell, nbOfAccessCell,false, -1)
-      );
-      // For each accessible cell-element in array accessibleCells add accessible class
-      accessibleCells.forEach((accessibleCells) => accessibleCells.element.addClass("accessible"));
+    accessibleCells = accessibleCells.concat(
+      this.getAccessCellsAxis(cell, nbOfAccessCell, true, -1)
+    );
+    accessibleCells = accessibleCells.concat(
+      this.getAccessCellsAxis(cell, nbOfAccessCell, false, 1)
+    );
+    accessibleCells = accessibleCells.concat(
+      this.getAccessCellsAxis(cell, nbOfAccessCell, false, -1)
+    );
+    // For each accessible cell-element in array accessibleCells add accessible class
+    accessibleCells.forEach((accessibleCells) => accessibleCells.element.addClass("accessible"));
   }
 
 }   
