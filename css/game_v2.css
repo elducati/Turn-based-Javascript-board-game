@@ -70,8 +70,9 @@
     cursor: pointer;
   }
   
-  .obstacle {
-    background-color: #63758c;
+  .wall {
+    background-image: url(../assets/wall.png);
+    background-size:contain;
   }
   
   /* ======= WEAPONS ======= */

@@ -72,7 +72,7 @@ export default class BoardGame {
     for (let obstacles = 0; obstacles < averageObstacles; obstacles++) {
       let cell = this.randomFreeCell();
       cell.obstacles = true;
-      cell.element.addClass("obstacle");
+      cell.element.addClass("wall");
     }
   }
   //randomly place weapons in free cells
