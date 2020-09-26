@@ -4,9 +4,9 @@ Step 1: Generate the map
 ------------------------
 Start by randomly generating the game map. Each box can be either:
 
-Empty
+* Empty
 
-Unavailable (dimmed)
+* Unavailable (dimmed)
 
 On the map, a limited number of weapons (up to 4) will be placed randomly and can be collected by players who pass through.
 
@@ -26,12 +26,12 @@ If players cross over adjacent squares (horizontally or vertically), a battle be
 
 During combat, the game works is as follows:
 
-Each player attacks in turn
+* Each player attacks in turn
 
-The damage depends on the player's weapon
+* The damage depends on the player's weapon
 
-The player can choose to attack or defend against the next shot
+* The player can choose to attack or defend against the next shot
 
-If the player chooses to defend themselves, they sustain 50% less damage than normal
+* If the player chooses to defend themselves, they sustain 50% less damage than normal
 
-As soon as the life points of a player (initially 100) falls to 0, they lose. A message appears and the game is over.
+* As soon as the life points of a player (initially 100) falls to 0, they lose. A message appears and the game is over.
