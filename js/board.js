@@ -89,7 +89,7 @@ export default class BoardGame {
     if (!cell.obstacle && cell.player === null && cell.weapon === null) {
       return cell;
     } else {
-      return randomFreeCell();
+      return;
     }
 
   }
