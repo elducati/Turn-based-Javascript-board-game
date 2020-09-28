@@ -1,6 +1,3 @@
-body{
-    text-align: center;
-}
 #board{
     background-color: rgba(0, 132, 255, 0.405);
     display: inline-block;    
@@ -15,53 +12,7 @@ body{
     margin: 2px;
     
 }
-.col.empty {
-    cursor: pointer;
-}
-.autobot{
-    background-image: url(../assets/autobot.png);
-    background-size: contain;
-}
-.deceptacon{
-    background-image: url(../assets/deceptacon.png);
-    background-size: contain;
-}
-.katana{
-    background-image: url(../assets/katana.png);
-    background-size:contain;
-}
-.gun{
-    background-image: url(../assets/gun.png);
-    background-size:contain;
-}
-.machine-gun{
-    background-image:url(../assets/machine-gun.png);
-    background-size:contain;
-}
-.rocket-launcher{
-    background-image:url(../assets/rocket-launcher.png);
-    background-size:contain;
-}
-.wall{
-    background-image: url(../assets/wall.png);
-    background-size:contain;
 
-}
-.highlighted{
-    border: 2px solid green;
-}
-.player-active{
-    border: 2px solid blue;
-    background-color: green;
-}
-.player-not-active{
-    border: 2px solid grey;
-    background-color: grey;
-}
-.accessible {
-    background-color: rgb(160, 255, 255);
-    cursor: pointer;
-  }
 /* == GENERAL == */
 html {
     position: relative;
@@ -124,6 +75,9 @@ html {
   a:hover.dropdown-item {
     color: midnightblue;
     background-color: rgba(191, 212, 238, 0.5);
+  }
+  .text-light {
+    color: #000000!important;
   }
   
   /* == Icons styles == */

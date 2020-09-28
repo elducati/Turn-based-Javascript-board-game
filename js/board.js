@@ -71,7 +71,7 @@ export default class BoardGame {
     let averageObstacles = Math.floor((this.width * this.height) / ((this.width + this.height) / 2));
     for (let obstacles = 0; obstacles < averageObstacles; obstacles++) {
       let cell = this.randomFreeCell();
-      cell.obstacles = true;
+      cell.obstacle = true;
       cell.element.addClass("wall");
     }
   }
@@ -89,7 +89,7 @@ export default class BoardGame {
     if (!cell.obstacle && cell.player === null && cell.weapon === null) {
       return cell;
     } else {
-      return;
+      return this.randomFreeCell();
     }
 
   }
@@ -111,25 +111,27 @@ export default class BoardGame {
     return adjacentCells;
   }
   //check if cell exits in the grid
-  cellExit(x, y) {
+  cellExist(x, y) {
     return x >= 0 && x < this.width && y < this.height;
   }
   //return array of accessible cells
   getAccessCellsAxis(cell, nbOfAccessCell, horizontal, axis) {
     let accessibleCells = [];
+
     // horizontal direction and axis
     for (let i = 1; i <= nbOfAccessCell; i++) {
-      let x = cell.x + (horizontal ? axis * i : 0);
-      let y = cell.y + (horizontal ? 0 : axis * i);
+        let x = cell.x + (horizontal ? axis * i : 0);
+        let y = cell.y + (horizontal ? 0 : axis * i);
 
-      if (this.cellExit(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
-        accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
-      } else {
-        break;
-      }
+        if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
+            accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
+            console.log(this.cells[parseInt(x)][parseInt(y)].isFree());
+        } else {
+            break;
+        }
     }
     return accessibleCells;
-  }
+}
   // This method is called in the game object of the Game class
   // Method to concat accessibleCells array in order to return all cells accessible by the player
 

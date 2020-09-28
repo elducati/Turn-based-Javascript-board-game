@@ -1,4 +1,3 @@
-
 export default class Cell {
     constructor(x, y, element) {
         this.x = x;

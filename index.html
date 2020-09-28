@@ -2,124 +2,190 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>Board Game</title>
-  <!-- MDB icon -->
-  <link rel="icon" href="" type="image/x-icon" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-  <!-- Google Fonts Roboto -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/game_v2.css">
-  <!-- MDB -->
-  <link rel="stylesheet" href="css/mdb.min.css" />
-  <!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
-</script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <!-- Custom styles -->
-  <style></style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Board Game</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game_v2.css">
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+    </script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- Custom styles -->
+    <style></style>
 </head>
 
 <body>
-  <!-- Start your project here-->
-  <div class="container row">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-6">              
-        <h5 class="pt-3">Turn-based Board Game</h5>       
-      <div id="board">
-        
-      </div>
-    </div>
-    <!-- Players Stats -->
-    <div id="scoreTable" class="col-12 col-sm-12 col-md-12 col-lg-6">
-      <div id="stats" class="row pl-md-4 pr-md-4 pl-lg-0 pr-lg-0 mt-0">
+    <!-- Start your project here-->
+    <div class="container">
+        <!-- Game Rules -->
+        <div class="row p-2 mb-2">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                <p><span class="text-light title mb-0">War of the Cybertrons</span>
+                    <button id="volumeMute" class="btn-song float-right mt-2" onclick="mute()"><i
+                            class="fas fa-volume-mute"></i></button>
+                    <button id="volumeUp" class="btn-song float-right mt-2 mr-2" onclick="play()"><i
+                            class="fas fa-volume-up"></i></button>
+                </p>
+                <p class="text-weight-light text-warning mb-0">Turn-based Board Game</p>
+            </div>
 
-          <!-- Player 1 -->
-          <div id="Player1" class="col-12 mb-2 mb-md-3">
-              <div class="row justify-content-center h-100">
-                  <div class="col-3 text-center bg-warning pb-2 pb-sm-3">
-                      <p class="mt-2 mb-0 mb-md-2"><span id="hero1-name"></span></p>
-                      <img src="assets/deceptacon.png" alt="viking 1" class="imgPlayer">
-                  </div>
-
-                  <div class="pv_status col-9 bg-light">
-                      <div class="row pt-2 mb-2">
-                          <div class="col-4 text-center m-auto">
-                              <span id="hero1-weapon-image"></span>
-                          </div>
-                          <div class="col-8">
-                              <p class="mb-0 mt-sm-2">Weapon&nbsp;: <span id="hero1-weapon-name" class="text-secondary"></span></p>
-                              <div class="mb-0">
-                                  <span>Power&nbsp;: </span><span id="hero1-weapon-infos"></span>
-                              </div>
-                              <div class="hero1-percentage-life mt-2 mb-2">
-                                  100%
-                                  <div id="hero1-move" class="hero-turn hero1-move"></div>
-                              </div>
-
-                              <div class="life">
-                                  <div class="hero1-barre-life"></div>
-                              </div>
-                          </div>
-                      </div>
-
-                      <div class="row justify-content-center button-action mb-2">
-                          <button class="col-4 hero1-attack-button fight-btn fight-btn_attack">Attack</button>
-                          <button class="col-4 hero1-defense-button fight-btn fight-btn_defence">Defend</button>
-                      </div>
-                  </div>
-
-              </div>
-          </div>
-          <!-- ./Player 1 -->
-           <!-- Player 2 -->
-
-           <div id="Player2" class="col-12 ">
-            <div class="row justify-content-center h-100">
-                <div class="col-3 text-center hero2_bg pb-2 pb-sm-3">
-                    <p class="mt-2 mb-0 mb-md-2"><span id="hero2-name"></span></p>
-                    <img src="assets/autobot.png" alt="viking 2" class="imgPlayer">
-                </div>
-
-                <div class="pv_status col-9 bg-light">
-                    <div class="row pt-2 mb-2">
-                        <div class="col-4 text-center m-auto">
-                            <div id="hero2-weapon-image"></div>
-                        </div>
-                        <div class="col-8">
-                            <p class="mb-0 mt-sm-2">Weapon&nbsp;: <span id="hero2-weapon-name" class="text-secondary"></span></p>
-                            <div class="mb-0">
-                                <span>Power&nbsp;: </span><span id="hero2-weapon-infos"></span>
-                            </div>
-                            <div class="hero2-percentage-life mt-2 mb-2">
-                                100%
-                                <div id="hero2-move" class="hero-turn hero2-move"></div>
-                            </div>
-                            <div class="life">
-                                <div class="hero2-barre-life"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-center button-action mb-2">
-                        <button class="col-4 hero2-attack-button fight-btn fight-btn_attack">Attack</button>
-                        <button class="col-4 hero2-defense-button fight-btn fight-btn_defence">Defend</button>
-                    </div>
-                </div>
-
+            <div class="col-12 col-sm-12 col-md-6">
+                <button id="rules" class="btn btn-outline-light ml-0 mb-0 ripple-surface" style="color: black;">Rules of
+                    the Game</button>
             </div>
         </div>
-        <!-- ./Player 2 -->
+        <div id="game-rules" class="row p-2">
+            <div class="col-12 col-sm-12 col-md-6">
+                <ul class="text-weight-light text-light text-smaller rules">
+                    <li>Warriors are placed on the battlefield at random.</li>
+                    <li>Each is equipped with a weapon by default.</li>
+                    <li>Everyone can make a move up to 3 squares.</li>
+                    <li>If a player passes over a square containing a weapon, he leaves his current weapon there and
+                        replaces it with the new one.</li>
+                </ul>
+            </div>
+            <div class="col-12 col-sm-12 col-md-6">
+                <ul class="text-weight-light text-light text-smaller rules">
+                    <li>Weapons have different damage points (power).</li>
+                    <li>When the two warriors are side by side, a fight begins.</li>
+                    <li>The damage inflicted depends on the weapon possessed by the player.</li>
+                    <li>The player can choose to attack or defend against the next hit.</li>
+                    <li>When the player defends himself, he takes 50% less damage than normal.</li>
+                </ul>
+            </div>
+        </div>
 
-  </div>
-  <!-- End your project here-->
+        <div class="container row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+
+                <div id="board">
+
+                </div>
+            </div>
+            <!-- Players Stats -->
+            <div id="scoreTable" class="col-12 col-sm-12 col-md-12 col-lg-6">
+                <div id="stats" class="row pl-md-4 pr-md-4 pl-lg-0 pr-lg-0 mt-0">
+
+                    <!-- Player 1 -->
+                    <div id="Player1" class="col-12 mb-2 mb-md-3">
+                        <div class="row justify-content-center h-100">
+                            <div class="col-3 text-center bg-warning pb-2 pb-sm-3">
+                                <p class="mt-2 mb-0 mb-md-2"><span id="hero1-name"></span></p>
+                                <img src="assets/deceptacon.png" alt="viking 1" class="imgPlayer">
+                            </div>
+
+                            <div class="pv_status col-9 bg-light">
+                                <div class="row pt-2 mb-2">
+                                    <div class="col-4 text-center m-auto">
+                                        <span id="hero1-weapon-image"></span>
+                                    </div>
+                                    <div class="col-8">
+                                        <p class="mb-0 mt-sm-2">Weapon&nbsp;: <span id="hero1-weapon-name"
+                                                class="text-secondary"></span></p>
+                                        <div class="mb-0">
+                                            <span>Power&nbsp;: </span><span id="hero1-weapon-infos"></span>
+                                        </div>
+                                        <div class="hero1-percentage-life mt-2 mb-2">
+                                            100%
+                                            <div id="hero1-move" class="hero-turn hero1-move"></div>
+                                        </div>
+
+                                        <div class="life">
+                                            <div class="hero1-barre-life"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center button-action mb-2">
+                                    <button class="col-4 hero1-attack-button fight-btn fight-btn_attack">Attack</button>
+                                    <button
+                                        class="col-4 hero1-defense-button fight-btn fight-btn_defence">Defend</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- ./Player 1 -->
+                    <!-- Player 2 -->
+
+                    <div id="Player2" class="col-12 ">
+                        <div class="row justify-content-center h-100">
+                            <div class="col-3 text-center hero2_bg pb-2 pb-sm-3">
+                                <p class="mt-2 mb-0 mb-md-2"><span id="hero2-name"></span></p>
+                                <img src="assets/autobot.png" alt="viking 2" class="imgPlayer">
+                            </div>
+
+                            <div class="pv_status col-9 bg-light">
+                                <div class="row pt-2 mb-2">
+                                    <div class="col-4 text-center m-auto">
+                                        <div id="hero2-weapon-image"></div>
+                                    </div>
+                                    <div class="col-8">
+                                        <p class="mb-0 mt-sm-2">Weapon&nbsp;: <span id="hero2-weapon-name"
+                                                class="text-secondary"></span></p>
+                                        <div class="mb-0">
+                                            <span>Power&nbsp;: </span><span id="hero2-weapon-infos"></span>
+                                        </div>
+                                        <div class="hero2-percentage-life mt-2 mb-2">
+                                            100%
+                                            <div id="hero2-move" class="hero-turn hero2-move"></div>
+                                        </div>
+                                        <div class="life">
+                                            <div class="hero2-barre-life"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center button-action mb-2">
+                                    <button class="col-4 hero2-attack-button fight-btn fight-btn_attack">Attack</button>
+                                    <button
+                                        class="col-4 hero2-defense-button fight-btn fight-btn_defence">Defend</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- ./Player 2 -->
+                </div>
+                <!-- GAME OVER Modal -->
+                <div class="modal fade show" id="endGameModal" tabindex="-1" role="dialog"
+                    aria-labelledby="endGameModalTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="endGameModalTitle">Game Over</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row justify-content-center">
+                                    <div id="gameOverMessage" class="p-2"></div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="restart">Replay</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./GAME OVER Modal -->
+            </div>
+            <!-- End your project here-->
 </body>
 
 <!-- MDB -->
@@ -130,5 +196,6 @@
 <script type="module" src="js/helper.js"></script>
 <script type="module" src="js/cell.js"></script>
 <script type="module" src="js/game.js"></script>
+<script type="module" src="js/interface.js"></script>
 
 </html>

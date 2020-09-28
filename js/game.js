@@ -68,7 +68,7 @@ export default class Game {
     prepareClash() {
 
         $("#board div").not(".hero2, .hero1").css("opacity", "0.5");
-        $("[class^='cell']").not(".hero2, .hero1", "obstacle").addClass("battle");
+        $("[class^='cell']").not(".hero2, .hero1", "wall").addClass("battle");
         $("#board").off("click");
         $(".cell").addClass("accessible");
         $(".fight-btn").css("display", "block");
