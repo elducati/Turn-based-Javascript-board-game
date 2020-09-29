@@ -125,8 +125,7 @@ export default class BoardGame {
         let y = cell.y + (horizontal ? 0 : axis * i);
 
         if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
-            accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
-            console.log( this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree());
+            accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);            
         } else {
             break;
         }

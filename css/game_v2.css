@@ -66,12 +66,13 @@
   }
   
   .accessible {
-    background-color: rgb(160, 255, 255);
+    background-color: rgb(93, 243, 243);
     cursor: pointer;
   }
   
   .wall {
     background-image: url(../assets/wall.png);
+    background-color:#38434c;
     background-size:contain;
   }
   
