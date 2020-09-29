@@ -8,10 +8,10 @@ class Weapon {
     }
 }
 
-let weapon2 = new Weapon("gun", 15, "Gun");
-let weapon3 = new Weapon("katana", 30, "Katana");
+let weapon2 = new Weapon("gun", 20, "Gun");
+let weapon3 = new Weapon("katana", 10, "Katana");
 let weapon4 = new Weapon("machine-gun", 40, "Machine Gun");
 
-export let weapon1 = new Weapon("rocket-launcher", 10, "Rocket Launcher");
+export let weapon1 = new Weapon("rocket-launcher", 50, "Rocket Launcher");
 
 weapons.push(weapon2, weapon3, weapon4);
