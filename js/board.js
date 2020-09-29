@@ -1,5 +1,6 @@
 import Cell from "./cell.js";
 
+
 export default class BoardGame {
   //instantiate BoardGame constructor
   constructor(player1, player2, weapons) {
@@ -112,7 +113,7 @@ export default class BoardGame {
   }
   //check if cell exits in the grid
   cellExist(x, y) {
-    return x >= 0 && x < this.width && y < this.height;
+    return x >= 0 && x < this.width && y>= 0 && y < this.height;
   }
   //return array of accessible cells
   getAccessCellsAxis(cell, nbOfAccessCell, horizontal, axis) {
@@ -125,7 +126,7 @@ export default class BoardGame {
 
         if (this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree()) {
             accessibleCells.push(this.cells[parseInt(x)][parseInt(y)]);
-            console.log(this.cells[parseInt(x)][parseInt(y)].isFree());
+            console.log( this.cellExist(x, y) && this.cells[parseInt(x)][parseInt(y)].isFree());
         } else {
             break;
         }

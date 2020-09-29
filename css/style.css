@@ -12,6 +12,9 @@
     margin: 2px;
     
 }
+.turn-based-title-color{
+  color: rgb(0, 132, 255);
+}
 
 /* == GENERAL == */
 html {
