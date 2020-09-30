@@ -143,6 +143,9 @@ class Player {
             location.reload();
         });
     }
+    
+
+    
 
 }
 
